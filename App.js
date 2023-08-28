@@ -1,20 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Importing necessary modules and components for the App.
+import React, { useEffect, useState } from "react";
 
+// Importing the NavigationComponent from the specified path.
+import NavigationComponent from "./src/navigation/Navigation";
+
+// App component that renders the NavigationComponent.
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <NavigationComponent></NavigationComponent>;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

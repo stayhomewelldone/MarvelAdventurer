@@ -9,7 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+credentials.txt
 # macOS
 .DS_Store
 
