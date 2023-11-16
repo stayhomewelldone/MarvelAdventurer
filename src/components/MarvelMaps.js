@@ -1,19 +1,7 @@
 // Importing necessary modules and components from various libraries.
-import MapView, { Marker, Polyline, Callout } from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
 import { useTheme } from "react-native-paper";
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-  Layout,
-  FadeOutDown,
-  FadeInUp,
-  RotateInDownLeft,
-  LightSpeedInRight,
-  RollOutLeft,
-  RollInLeft,
-} from "react-native-reanimated";
+import { GOOGLE_MAPS_APIKEY } from "@env";
 import { Image } from "expo-image";
 import * as Location from "expo-location";
 import { StyleSheet, View, Text, Pressable } from "react-native";
@@ -85,8 +73,6 @@ export default function MarvelMaps(props, { route, navigation }) {
     latitude: markerLocation.latitude,
     longitude: markerLocation.longitude,
   };
-  // Google Maps API key for directions.
-  const GOOGLE_MAPS_APIKEY = "AIzaSyBU-WMkiuS7QDmr9oa6BYVqZXaWHnUqLqA";
   const character = props.characters.find((item) => {
     return item.id === id;
   });

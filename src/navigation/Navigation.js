@@ -133,18 +133,20 @@ export default function NavigationComponent() {
   const [characters, setCharacter] = useState([]);
 
   // Set the values for publicKey, timestamp, privateKey, limit, and hash
-  const publicKey = "78557a90ec01081caf66e5e5a2825fdd";
   const timestamp = new Date().getTime();
-  const privateKey = "70135b0de130582a422bff0d1850aae322225ebd";
   const limit = 10;
-  const hash = md5(timestamp + privateKey + publicKey);
+  const hash = md5(
+    timestamp +
+      process.env.EXPO_MARVEL_PRIVATE_KEY +
+      process.env.EXPO_MARVEL_PUBLIC_KEY
+  );
 
   // Define an asynchronous function 'getCharacters' to fetch character data from an API
   const getCharacters = async () => {
     try {
       // Make a fetch request to the Marvel API to retrieve character data
       const response = await fetch(
-        `https://gateway.marvel.com/v1/public/characters?limit=${limit}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
+        `https://gateway.marvel.com/v1/public/characters?limit=${limit}&ts=${timestamp}&apikey=${process.env.EXPO_MARVEL_PUBLIC_KEY}&hash=${hash}`
       );
       // Parse the response data as JSON
       const data = await response.json();

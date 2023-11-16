@@ -2,19 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import MapView, { Marker, Polyline, Callout } from "react-native-maps";
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-  Layout,
-  FadeOutDown,
-  FadeInUp,
-  RotateInDownLeft,
-  LightSpeedInRight,
-  BounceIn,
-} from "react-native-reanimated";
+import Animated, { BounceIn } from "react-native-reanimated";
 import {
   StyleSheet,
   Text,
@@ -23,8 +11,6 @@ import {
   SafeAreaView,
   FlatList,
   Pressable,
-  Modal,
-  TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -38,7 +24,6 @@ export default function MarvelCharacters(props) {
 
   // Define state variables for 'outerkeys' and 'modalVisible' using the useState hook
   const [outerkeys, setOuterKeys] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
 
   // Define an asynchronous function 'storeData' to save data to AsyncStorage
   const storeData = async (value) => {
