@@ -105,15 +105,10 @@ export default function NavigationComponent() {
     try {
       // Convert the value to a string
       const stringValue = value.toString();
-      // Log the string value to the console
-      console.log(stringValue);
       // Store the string value in AsyncStorage with the key "isThemeDark"
       await AsyncStorage.setItem("isThemeDark", stringValue);
-      // Log the string value again to the console
-      console.log(stringValue);
     } catch (e) {
       // Handle any errors that occur during saving
-      // (e.g., logging the error or displaying an error message)
     }
   };
 
@@ -138,9 +133,9 @@ export default function NavigationComponent() {
   const [characters, setCharacter] = useState([]);
 
   // Set the values for publicKey, timestamp, privateKey, limit, and hash
-  const publicKey = "";
+  const publicKey = "78557a90ec01081caf66e5e5a2825fdd";
   const timestamp = new Date().getTime();
-  const privateKey = "";
+  const privateKey = "70135b0de130582a422bff0d1850aae322225ebd";
   const limit = 10;
   const hash = md5(timestamp + privateKey + publicKey);
 
@@ -186,8 +181,6 @@ export default function NavigationComponent() {
     try {
       // Retrieve the value associated with the key "isThemeDark" from AsyncStorage
       const jsonValue = await AsyncStorage.getItem("isThemeDark");
-      // Log the retrieved value to the console
-      console.log(jsonValue);
       // Convert the retrieved value to a boolean
       let boolValue = jsonValue === "true";
       // Update the 'isThemeDark' state with the retrieved value
@@ -196,10 +189,7 @@ export default function NavigationComponent() {
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       // Handle any errors that occur during reading
-      // (e.g., logging the error or displaying an error message)
     }
-
-    console.log("Done.");
   };
 
   // Run the 'getCharacters' and 'getMyObject' functions when the component mounts

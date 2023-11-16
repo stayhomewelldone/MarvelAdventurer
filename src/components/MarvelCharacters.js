@@ -47,13 +47,10 @@ export default function MarvelCharacters(props) {
       const stringValue = value.toString();
       // Store the value in AsyncStorage using the value as both the key and the data
       await AsyncStorage.setItem(stringValue, stringValue);
-      // Log the stored value to the console
-      console.log(stringValue);
       // Add the value to the 'outerkeys' state
       setOuterKeys((prevKeys) => [...prevKeys, value]);
     } catch (e) {
       // Handle any errors that occur during saving
-      // (e.g., logging the error or displaying an error message)
     }
   };
 
@@ -63,16 +60,11 @@ export default function MarvelCharacters(props) {
       const stringValue = value.toString();
       // Remove the value from AsyncStorage using the value as the key
       await AsyncStorage.removeItem(stringValue);
-      // Log the deleted value to the console
-      console.log("deleted:", value);
       // Update the 'outerkeys' state by filtering out the removed value
       setOuterKeys((prevKeys) => prevKeys.filter((key) => key !== value));
     } catch (e) {
       // Handle any errors that occur during removal
-      // (e.g., logging the error or displaying an error message)
     }
-
-    console.log("Done.");
   };
 
   // Define an asynchronous function 'clearAll' to clear all data from AsyncStorage
@@ -82,9 +74,7 @@ export default function MarvelCharacters(props) {
       await AsyncStorage.clear();
     } catch (e) {
       // Handle any errors that occur during clearing
-      // (e.g., logging the error or displaying an error message)
     }
-    console.log("Done.");
   };
 
   // Define an asynchronous function 'getAllKeys' to retrieve all keys from AsyncStorage
@@ -98,7 +88,6 @@ export default function MarvelCharacters(props) {
       setOuterKeys(data);
     } catch (e) {
       // Handle any errors that occur during key retrieval
-      // (e.g., logging the error or displaying an error message)
     }
   };
 
@@ -155,7 +144,6 @@ export default function MarvelCharacters(props) {
               <Pressable
                 style={styles.detailButton}
                 onPress={() => {
-                  console.log("Click");
                   navigation.navigate("Detail", {
                     id: item.id,
                   });
@@ -178,7 +166,6 @@ export default function MarvelCharacters(props) {
               <Pressable
                 style={styles.mapButton}
                 onPress={() => {
-                  console.log("Click");
                   navigation.navigate("Map", {
                     id: item.id,
                   });

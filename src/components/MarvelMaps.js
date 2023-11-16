@@ -57,8 +57,6 @@ export default function MarvelMaps(props, { route, navigation }) {
       quality: 1,
     });
 
-    console.log(result.assets);
-
     if (!result.canceled) {
       setImage(result.assets[0].uri);
       await MediaLibrary.saveToLibraryAsync(result.assets[0].uri);
@@ -88,7 +86,7 @@ export default function MarvelMaps(props, { route, navigation }) {
     longitude: markerLocation.longitude,
   };
   // Google Maps API key for directions.
-  const GOOGLE_MAPS_APIKEY = "";
+  const GOOGLE_MAPS_APIKEY = "AIzaSyBU-WMkiuS7QDmr9oa6BYVqZXaWHnUqLqA";
   const character = props.characters.find((item) => {
     return item.id === id;
   });
@@ -128,13 +126,11 @@ export default function MarvelMaps(props, { route, navigation }) {
           longitude: e.nativeEvent.coordinate.longitude,
         });
       }}
-      onLongPress={(e) => console.log(e.nativeEvent)}
     >
       {props.characters.map((marker) => (
         <Marker
           key={marker.id}
           onSelect={(e) => {
-            console.log(e.nativeEvent);
             setMarkerLocation({
               latitude: e.nativeEvent.coordinate.latitude,
               longitude: e.nativeEvent.coordinate.longitude,
@@ -152,13 +148,7 @@ export default function MarvelMaps(props, { route, navigation }) {
             source={{ uri: marker.url }}
             style={{ height: 35, width: 35 }}
           />
-          <Callout
-            tooltip
-            style={styles.calloutContainer}
-            onPress={() => {
-              console.log("Callout pressed");
-            }}
-          >
+          <Callout tooltip style={styles.calloutContainer}>
             <View>
               <Text style={styles.calloutTitle}>{marker.name}</Text>
               <Text style={styles.calloutDescription}>
